@@ -1,8 +1,9 @@
 import { Avatar, Button, Container, Icon, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { NextPage } from "next";
 import Link from "next/link";
 
-const Forgot = () => {
+const Forgot: NextPage = () => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);

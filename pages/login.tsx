@@ -1,11 +1,12 @@
-import { Avatar, Button, Checkbox, Container, FormControlLabel, Grid, Icon, Link, Paper, Skeleton, TextField, Typography } from "@mui/material";
+import { Avatar, Button, Checkbox, Container, FormControlLabel, Grid, Icon, Link, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { useAuth } from "../src/hooks/useAuth";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { NextPage } from "next";
 
 
-const Login = () => {
+const Login: NextPage = () => {
     const router = useRouter()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -15,15 +16,15 @@ const Login = () => {
     const handleLogin = async (event: any) => {
         event.preventDefault();
         //const data = new FormData(event.currentTarget);
-        await authLogin(username, password);
+        await authLogin(username, password)
 
-    };
+    }
 
     useEffect(() => {
         if (signed) {
             router.push('/user');
         }
-    }, [signed]);
+    }, [signed, router])
 
 
     return (

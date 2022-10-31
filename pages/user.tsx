@@ -1,9 +1,10 @@
 import { Box, Button, Container, Paper, TextField, Typography } from "@mui/material";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useAuth } from "../src/hooks/useAuth";
 
-const User = () => {
+const User: NextPage = () => {
     const router = useRouter()
 
     const { user, signed, authLogout, authUpdateProfile } = useAuth();
@@ -18,7 +19,7 @@ const User = () => {
         if (!signed) {
             router.push('/login');
         }
-    }, [signed]);
+    }, [signed, router])
 
     function reset() {
         setUsername(user?.username ? user.username : '')
@@ -33,7 +34,7 @@ const User = () => {
         await authUpdateProfile(username, fullName, email, password).then(() => {
             setEdit(false)
         });
-    };
+    }
 
     return (
         <Container maxWidth="xs" component={Paper}>

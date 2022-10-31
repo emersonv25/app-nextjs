@@ -1,9 +1,10 @@
-import { Avatar, Button, Checkbox, Container, FormControlLabel, Grid, Icon, Link, Paper, TextField, Typography } from "@mui/material";
+import { Avatar, Button, Checkbox, Container, FormControlLabel, Icon, Link, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { NextPage } from "next";
 import { useState } from "react";
 import { useAuth } from "../src/hooks/useAuth";
 
-const Register = () => {
+const Register: NextPage = () => {
 
     const [username, setUsername] = useState('')
     const [fullName, setFullName] = useState('')

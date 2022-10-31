@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { User } from "../@types/user";
 import { useDebounce } from "../hooks/useDebounce";
 import { getProfile } from "../services/api";
@@ -41,7 +41,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }: IAuthPr
                 }
             }
         }
-    }, [])
+    }, [debounce])
 
 
     function logout() {
@@ -51,9 +51,9 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }: IAuthPr
         setUser(null)
         setToken('')
     }
-    async function verifyToken(token: string) {
-        console.log('verify token')
-        await getProfile(token).then(response => {
+
+    async function verifyToken (token: string) {
+         await getProfile(token).then(response => {
             localStorage.setItem("user", JSON.stringify(response))
             setUser(response)
             setToken(token)
@@ -62,6 +62,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }: IAuthPr
             logout()
         })
     }
+
     return (
         <AuthContext.Provider value={{
             signed: Boolean(user),

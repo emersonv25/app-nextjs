@@ -9,7 +9,7 @@ export default function AlertPopup() {
 
   useEffect(() => {
     setTimeout(closeAlert, 10000)
-  },[alert]);
+  },[alert, closeAlert]);
 
   if (alert) {
     return (

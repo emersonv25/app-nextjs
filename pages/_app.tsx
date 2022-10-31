@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AppProps } from 'next/app';
-import { createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../src/utils/createEmotionCache';
